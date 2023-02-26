@@ -4,7 +4,7 @@ const thoughtSchema = new Schema(
     {
         thought: { type: String, required: true, minLength:1, maxLength: 280},
         createdAt: { type: Date, default: Date.now },
-        user: { type: String },
+        user: { type: String, required: true },
     }, 
     {
         toJSON: {
