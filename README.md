@@ -5,7 +5,7 @@
 This project was created as a backend template for a social media site. It has full CRUD functionality.
 
 ## Badge 
-![not twitter](https://img.shields.io/badge/ecommerce-store-blue.svg)
+![not twitter](https://img.shields.io/badge/not-twitter-blue.svg)
 
 ## Table of Contents
 
