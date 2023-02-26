@@ -3,34 +3,38 @@ const { Thought, User } = require('../models')
 module.exports = {
     getThoughts(req, res) {
         Thought.find()
-            .then((posts) => res.json(posts))
+            .select('-__v')
+            .then((thought) => res.json(thought))
             .catch((err) => res.status(500).json(err));
     },
     getSingleThought(req, res) {
         Thought.findOne({ _id: req.params.thoughtId })
-            .then((post) => 
-            !post
+            .select('-__v')
+            .then((thought) => 
+            !thought
                 ? res.status(404).json({ message: 'ID does not match any thoughts'})
-                : res.json(post)
+                : res.json(thought)
             )
             .catch((err) => res.status(500).json(err));
     },
     createThought(req, res) {
-        Thought.create(req, res)
-            .then((post) => {
+        Thought.create({thought: req.body.thought, user: req.body.user})
+            .then((thought) => {
+                console.log(thought._id)
                 return User.findOneAndUpdate(
-                    { _id: req.body.userId },
-                    { $addToSet: { thoughts: post._id } },
+                    { user: req.body.user },
+                    { $addToSet: { thoughts: thought._id } },
                     { new: true }
                 );
             })
-            .then((user) => 
+            .then((user) => {
+            console.log(user)
                 !user
                     ? res
                         .status(404)
                         .json({ message: 'Post created without user ID'})
                     : res.json('Post created')
-            )
+            })
             .catch((err) => {
                 console.log(err);
                 res.status(500).json(err);
