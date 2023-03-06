@@ -31,6 +31,8 @@ Using this application allows you to view all or one user or post and add, remov
 
 ![Screen Shot 2023-02-25 at 4 56 03 PM](https://user-images.githubusercontent.com/116322906/221386591-057dc8e1-2063-4103-969e-4dc8de622f24.png)
 
+[Video Walkthrough](https://youtu.be/dvOLLw6v2uk)
+
 ## Credits
 Me
 
